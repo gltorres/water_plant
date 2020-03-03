@@ -1,0 +1,28 @@
+version: 0.2
+
+run-as: Linux-user-name
+
+proxy:
+    upload-artifacts: yes
+    logs: yes
+            
+phases:
+  pre_build:
+    run-as: root
+    commands:
+      - echo 'a'
+      - echo 'b'
+    finally:
+      - echo 'c'
+  build:
+    run-as: root
+    commands:
+      - echo 'a'
+    finally:
+      - echo 'NOOOO'
+  post_build:
+    run-as: root
+    commands:
+      - aws codebuild start-build --project-name testGithub
+    finally:
+      - echo '123'
