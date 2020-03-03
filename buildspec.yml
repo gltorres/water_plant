@@ -23,6 +23,6 @@ phases:
   post_build:
     run-as: root
     commands:
-      - aws codebuild start-build --project-name testGithub
+      - echo 'yaaay!'
     finally:
       - echo '123'
